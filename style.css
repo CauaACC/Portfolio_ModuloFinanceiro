@@ -1,0 +1,346 @@
+/* --- Reset básico --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary: #1f4e79;
+    --primary-light: #2e6ba8;
+    --accent: #ec7a1a;
+    --bg: #f7f8fa;
+    --bg-alt: #ffffff;
+    --text: #1c2733;
+    --muted: #5d6b7c;
+    --border: #d9dee5;
+    --ok: #1e8e3e;
+    --doing: #b06c00;
+    --todo: #6b7280;
+    --radius: 8px;
+    --shadow: 0 2px 8px rgba(0,0,0,.05);
+    --shadow-lg: 0 6px 20px rgba(0,0,0,.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+/* --- HERO --- */
+.hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: #fff;
+    padding-bottom: 80px;
+    position: relative;
+}
+
+.topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    background: rgba(0,0,0,.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(6px);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.topnav .brand { font-weight: 700; letter-spacing: .3px; }
+.topnav ul { list-style: none; display: flex; gap: 22px; flex-wrap: wrap; }
+.topnav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: .88;
+    transition: opacity .15s ease;
+}
+.topnav a:hover { opacity: 1; text-decoration: underline; }
+
+.hero-content {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 80px 24px 20px;
+}
+.hero-content h1 {
+    font-size: 44px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    letter-spacing: -.5px;
+}
+.hero-content .tagline {
+    font-size: 20px;
+    margin-bottom: 18px;
+    opacity: .95;
+}
+.hero-content .lead {
+    font-size: 16px;
+    opacity: .85;
+    max-width: 780px;
+}
+
+/* --- SEÇÕES --- */
+.section {
+    padding: 72px 0;
+    background: var(--bg);
+}
+.section.alt { background: var(--bg-alt); }
+
+.section h2 {
+    font-size: 30px;
+    margin-bottom: 32px;
+    color: var(--primary);
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+.section h3 {
+    font-size: 20px;
+    margin: 32px 0 14px;
+    color: var(--primary);
+}
+.section h4 {
+    font-size: 16px;
+    margin-bottom: 6px;
+    color: var(--text);
+}
+.section p, .section ul, .section ol { margin-bottom: 14px; }
+.section ul, .section ol { padding-left: 22px; }
+.section a { color: var(--primary-light); }
+.section code {
+    background: #eef2f7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+/* --- GRIDS --- */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 24px;
+    margin-top: 16px;
+}
+.grid-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: #fff;
+    padding: 22px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border-top: 3px solid var(--accent);
+}
+
+.tag {
+    background: var(--primary);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* --- CASOS DE USO --- */
+.uc-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 18px;
+    margin-top: 16px;
+}
+.uc-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: var(--radius);
+    border-left: 4px solid var(--accent);
+    box-shadow: var(--shadow);
+}
+.uc-item h4 {
+    color: var(--primary);
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 700;
+}
+.uc-item p { font-size: 14px; color: var(--muted); margin: 0; }
+
+/* --- CRONOGRAMA --- */
+.cronograma {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    background: #fff;
+    box-shadow: var(--shadow);
+    border-radius: var(--radius);
+    overflow: hidden;
+    font-size: 14px;
+}
+.cronograma th, .cronograma td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+.cronograma th {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+}
+.cronograma tr:last-child td { border-bottom: none; }
+.cronograma tr:hover td { background: #f5f8fc; }
+.cronograma td.ok    { color: var(--ok); font-weight: 600; }
+.cronograma td.doing { color: var(--doing); font-weight: 600; }
+.cronograma td.todo  { color: var(--todo); font-weight: 600; }
+
+/* --- FIGURAS --- */
+.figure {
+    margin: 20px 0;
+    text-align: center;
+}
+.figure img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background: #fff;
+    transition: transform .2s ease;
+}
+.figure a img:hover { transform: scale(1.01); box-shadow: var(--shadow-lg); }
+.figure figcaption {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 8px;
+    font-style: italic;
+}
+
+/* Placeholders para telas ainda não colocadas */
+.figure.placeholder.missing img { display: none; }
+.figure.placeholder.missing {
+    border: 2px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 60px 20px;
+    background: #fafbfd;
+    position: relative;
+}
+.figure.placeholder.missing::before {
+    content: "📷 imagem ainda não adicionada";
+    display: block;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+/* --- DOWNLOADS --- */
+.download-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+}
+.download-list li {
+    background: #fff;
+    padding: 14px 18px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border-left: 3px solid var(--primary-light);
+}
+.download-list a { text-decoration: none; font-weight: 500; }
+.download-list a:hover { text-decoration: underline; }
+
+/* --- VÍDEO --- */
+.video-wrap { margin-top: 16px; }
+.video-placeholder {
+    background: #fff;
+    border: 2px dashed var(--border);
+    padding: 60px 24px;
+    text-align: center;
+    border-radius: var(--radius);
+    color: var(--muted);
+}
+.video-placeholder p { margin-bottom: 8px; }
+
+/* --- BOTÃO DOWNLOAD --- */
+.btn-download {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff !important;
+    padding: 14px 28px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: var(--shadow);
+    transition: background .15s ease, transform .1s ease;
+}
+.btn-download:hover { background: #d66a10; transform: translateY(-1px); }
+
+.hint {
+    background: #fff5e0;
+    border-left: 4px solid var(--accent);
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+/* --- IDENTIFICAÇÃO --- */
+.id-card {
+    background: #fff;
+    padding: 28px 32px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    border-top: 4px solid var(--primary);
+    max-width: 640px;
+}
+.id-card p { margin-bottom: 10px; font-size: 15px; }
+.id-card p:last-child { margin-bottom: 0; }
+.edit-me {
+    background: #fff5e0;
+    color: #b06c00;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+/* --- FOOTER --- */
+.site-footer {
+    background: var(--primary);
+    color: #fff;
+    padding: 32px 0;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 40px;
+}
+.site-footer p { margin-bottom: 4px; opacity: .9; }
+
+/* --- RESPONSIVO --- */
+@media (max-width: 720px) {
+    .hero-content h1 { font-size: 32px; }
+    .hero-content .tagline { font-size: 17px; }
+    .section { padding: 48px 0; }
+    .section h2 { font-size: 24px; }
+    .topnav ul { gap: 14px; }
+    .cronograma { font-size: 12px; }
+    .cronograma th, .cronograma td { padding: 8px 10px; }
+}

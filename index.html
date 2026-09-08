@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de Estágio — Sistema Financeiro OPCTEC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+    <nav class="topnav">
+        <span class="brand">Portfólio de Estágio</span>
+        <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#casos-de-uso">Casos de Uso</a></li>
+            <li><a href="#documentacao">Documentação</a></li>
+            <li><a href="#telas">Telas / Vídeo</a></li>
+            <li><a href="#relatorio">Relatório</a></li>
+            <li><a href="#identificacao">Identificação</a></li>
+        </ul>
+    </nav>
+    <div class="hero-content" id="inicio">
+        <h1>Sistema Financeiro OPCTEC</h1>
+        <p class="tagline">Módulo <strong>Financeiro</strong> do libcurso — automação contábil dos cursos e eventos da HUTEC/UEL.</p>
+        <p class="lead">
+            Portfólio do projeto de estágio desenvolvido no 3º bimestre, reunindo documentação técnica,
+            evidências da implementação e o cronograma de evolução do trabalho.
+        </p>
+    </div>
+</header>
+
+<main>
+
+<!-- 1. PÁGINA INICIAL -->
+<section class="section alt" id="inicio-conteudo">
+    <div class="container">
+        <h2>1. Página Inicial</h2>
+
+        <div class="grid-3">
+            <div class="card">
+                <h3>Nome do Projeto</h3>
+                <p><strong>Sistema Financeiro OPCTEC</strong> — módulo Financeiro do libcurso (HUTEC/UEL).</p>
+            </div>
+            <div class="card">
+                <h3>Objetivo</h3>
+                <p>Fornecer aos gestores da HUTEC/UEL um conjunto de ferramentas para registrar, classificar e
+                    automatizar os lançamentos contábeis dos cursos e eventos, garantindo rastreabilidade,
+                    conciliação e apoio à tomada de decisão.</p>
+            </div>
+            <div class="card">
+                <h3>Breve Descrição</h3>
+                <p>Módulo web integrado ao sistema libcurso que implementa Plano de Contas, Centro de Custo,
+                    Rateios, Fontes de Recurso e Lançamentos Contábeis, além de motores automáticos de
+                    Contabilização (a partir de pagamentos) e Catálogo Contábil (bootstrap de eventos).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2. SOBRE O PROJETO -->
+<section class="section" id="sobre">
+    <div class="container">
+        <h2>2. Sobre o Projeto</h2>
+
+        <h3>Problema que o sistema busca resolver</h3>
+        <p>
+            A gestão contábil dos cursos e eventos da HUTEC-UEL era realizada em planilhas externas, com
+            registro manual de cada pagamento, cálculo de taxas por meio de pagamento (PIX, cartão, boleto),
+            distribuição de percentuais para taxas institucionais (Taxa HUTEC, Taxa Direção UEL) e conciliação
+            posterior de forma retrabalhosa. Esse cenário produzia:
+        </p>
+        <ul>
+            <li>Alto risco de erro humano nos lançamentos e rateios;</li>
+            <li>Dificuldade de conciliar receitas e despesas por evento;</li>
+            <li>Ausência de um Plano de Contas padronizado por gestor;</li>
+            <li>Falta de rastreabilidade entre pagamento → lançamento → conta contábil.</li>
+        </ul>
+        <p>
+            O Sistema Financeiro OPCTEC endereça esses pontos oferecendo um cadastro estruturado do
+            Plano de Contas, um motor de Contabilização que gera lançamentos automáticos a partir dos
+            pagamentos aprovados e um Catálogo Contábil que inicializa a estrutura contábil de um novo evento
+            a partir de um modelo padrão ou de outro evento do mesmo gestor.
+        </p>
+
+        <h3>Tecnologias utilizadas</h3>
+        <div class="grid-tech">
+            <span class="tag">PHP 7.x</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">ADODB</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">jQuery</span>
+            <span class="tag">HTML5 / CSS3</span>
+            <span class="tag">Bootstrap</span>
+            <span class="tag">Apache</span>
+            <span class="tag">Git / GitHub</span>
+            <span class="tag">Mermaid (diagramas)</span>
+            <span class="tag">Astah (UML)</span>
+        </div>
+
+        <h3>Arquitetura / Descrição resumida da solução</h3>
+        <p>
+            O sistema segue a arquitetura do libcurso: <strong>MVC + Command Pattern</strong>, com camadas
+            bem definidas:
+        </p>
+        <ul>
+            <li><strong>Controller</strong> (<code>Gerenciar*AC.php</code>): recebe ações do usuário e orquestra o fluxo;</li>
+            <li><strong>Domain</strong> (<code>Nome.php</code> + <code>NomeVO.php</code>): entidades e validadores de negócio;</li>
+            <li><strong>DAO</strong> (<code>NomeDAO.php</code>): persistência via ADODB sobre MySQL;</li>
+            <li><strong>View</strong> (<code>view/admin/Gerenciar*.php</code>): renderização das telas administrativas.</li>
+        </ul>
+        <p>
+            O menu <code>area_admin_menu_financeiro.php</code> confirma a hierarquia: a aba <strong>Financeiro</strong>
+            possui 4 subabas (Integrações, Contabilidade, Fiscal, Configuração), e o escopo deste estágio é a
+            subaba <strong>Contabilidade</strong>. Motores automáticos (Contabilização e Catálogo Contábil) operam
+            diretamente por SQL, sem camadas de domínio próprias.
+        </p>
+
+        <figure class="figure">
+            <img src="assets/diagramas/implantacao.png" alt="Diagrama de Implantação">
+            <figcaption>Figura 1 — Diagrama de Implantação da solução.</figcaption>
+        </figure>
+    </div>
+</section>
+
+<!-- 3. CASOS DE USO E CRONOGRAMA -->
+<section class="section alt" id="casos-de-uso">
+    <div class="container">
+        <h2>3. Casos de Uso e Cronograma de Desenvolvimento</h2>
+
+        <h3>3.1 Casos de Uso Previstos</h3>
+
+        <div class="uc-list">
+            <div class="uc-item">
+                <h4>UC01 — Gerenciar Plano de Contas</h4>
+                <p>Permite ao gestor cadastrar, editar e excluir contas contábeis do evento, definindo cada
+                    conta como Analítica (aceita lançamento) ou Sintética (agrupadora). A exclusão só é
+                    permitida se a conta não possuir filhos.</p>
+            </div>
+            <div class="uc-item">
+                <h4>UC02 — Gerenciar Centro de Custo</h4>
+                <p>Permite cadastrar centros de custo utilizados para segregar receitas e despesas por área
+                    ou finalidade dentro do evento.</p>
+            </div>
+            <div class="uc-item">
+                <h4>UC03 — Gerenciar Rateios</h4>
+                <p>Configura regras de rateio (percentuais e sub-rateios) aplicadas automaticamente na
+                    contabilização — por exemplo, Taxa HUTEC 10% e Taxa Direção UEL 10% com sub-rateios por
+                    curso.</p>
+            </div>
+            <div class="uc-item">
+                <h4>UC04 — Gerenciar Lançamentos Contábeis</h4>
+                <p>Registro manual ou automático de créditos e débitos nas contas do plano, com
+                    <code>origemLancamento</code> = MANUAL ou PAGAMENTO_AUTOMATICO, respeitando o bloqueio de
+                    períodos fechados.</p>
+            </div>
+            <div class="uc-item">
+                <h4>UC05 — Gerenciar Fontes de Recurso</h4>
+                <p>Cadastro das origens de recurso financeiro (ex.: PAGSEGURO, ITAU, CAIXA) usadas para
+                    classificar de onde vem o dinheiro em cada lançamento.</p>
+            </div>
+            <div class="uc-item">
+                <h4>UC06 — Contabilização Automática</h4>
+                <p>Motor invocado a partir da tela de Lançamentos. Para cada pagamento aprovado gera
+                    exatamente 2 linhas contábeis (crédito na receita + débito da taxa do meio de pagamento).
+                    É idempotente: reprocessar apaga somente linhas não conciliadas com origem
+                    PAGAMENTO_AUTOMATICO.</p>
+            </div>
+            <div class="uc-item">
+                <h4>UC07 — Catálogo Contábil (Bootstrap)</h4>
+                <p>Inicializa a estrutura contábil de um evento: pode COPIAR de outro evento do mesmo gestor
+                    ou aplicar o MODELO PADRÃO (22 contas, 3 fontes, 8 rateios pré-configurados baseados no
+                    balancete real da HUTEC). Não sobrescreve dados existentes.</p>
+            </div>
+        </div>
+
+        <h3>3.2 Cronograma de Desenvolvimento</h3>
+
+        <table class="cronograma">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Atividade / Caso de Uso</th>
+                    <th>Início</th>
+                    <th>Conclusão / Previsão</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>01</td><td>Levantamento de requisitos</td><td>01/04/2026</td><td>14/04/2026</td><td class="ok">Concluído</td></tr>
+                <tr><td>02</td><td>Documento de Visão</td><td>08/04/2026</td><td>21/04/2026</td><td class="ok">Concluído</td></tr>
+                <tr><td>03</td><td>UCSpecs (4 casos de uso)</td><td>15/04/2026</td><td>05/05/2026</td><td class="ok">Concluído</td></tr>
+                <tr><td>04</td><td>Diagramas UML (DER, Classe)</td><td>22/04/2026</td><td>12/05/2026</td><td class="ok">Concluído</td></tr>
+                <tr><td>05</td><td>UC01 — Plano de Contas</td><td>29/04/2026</td><td>19/05/2026</td><td class="ok">Concluído</td></tr>
+                <tr><td>06</td><td>UC02 — Centro de Custo</td><td>06/05/2026</td><td>19/05/2026</td><td class="ok">Concluído</td></tr>
+                <tr><td>07</td><td>UC05 — Fontes de Recurso</td><td>13/05/2026</td><td>26/05/2026</td><td class="ok">Concluído</td></tr>
+                <tr><td>08</td><td>UC03 — Rateios</td><td>13/05/2026</td><td>02/06/2026</td><td class="ok">Concluído</td></tr>
+                <tr><td>09</td><td>UC04 — Lançamentos Contábeis</td><td>20/05/2026</td><td>09/06/2026</td><td class="ok">Concluído</td></tr>
+                <tr><td>10</td><td>UC07 — Catálogo Contábil (bootstrap)</td><td>03/06/2026</td><td>16/06/2026</td><td class="doing">Em andamento</td></tr>
+                <tr><td>11</td><td>UC06 — Contabilização (motor auto)</td><td>10/06/2026</td><td>23/06/2026</td><td class="doing">Em andamento</td></tr>
+                <tr><td>12</td><td>Testes de integração</td><td>17/06/2026</td><td>30/06/2026</td><td class="todo">Previsto</td></tr>
+                <tr><td>13</td><td>Documentação final</td><td>24/06/2026</td><td>30/06/2026</td><td class="todo">Previsto</td></tr>
+            </tbody>
+        </table>
+
+        <figure class="figure">
+            <img src="assets/diagramas/cronograma.png" alt="Cronograma em Gantt">
+            <figcaption>Figura 2 — Cronograma de desenvolvimento em formato Gantt.</figcaption>
+        </figure>
+
+        <figure class="figure">
+            <img src="assets/diagramas/caso_de_uso.png" alt="Diagrama de Casos de Uso">
+            <figcaption>Figura 3 — Diagrama de Casos de Uso.</figcaption>
+        </figure>
+    </div>
+</section>
+
+<!-- 4. DOCUMENTAÇÃO -->
+<section class="section" id="documentacao">
+    <div class="container">
+        <h2>4. Documentação</h2>
+        <p>Todos os diagramas produzidos durante o projeto estão disponíveis abaixo. Clique nas imagens para
+            abrir em tela cheia.</p>
+
+        <h3>4.1 Diagrama de Classes</h3>
+        <figure class="figure">
+            <a href="assets/diagramas/diagrama_classe.png" target="_blank">
+                <img src="assets/diagramas/diagrama_classe.png" alt="Diagrama de Classes">
+            </a>
+            <figcaption>Figura 4 — Diagrama de Classes do domínio contábil.</figcaption>
+        </figure>
+
+        <h3>4.2 Diagrama Entidade-Relacionamento (DER)</h3>
+        <figure class="figure">
+            <a href="assets/diagramas/der.png" target="_blank">
+                <img src="assets/diagramas/der.png" alt="DER">
+            </a>
+            <figcaption>Figura 5 — Modelo relacional das tabelas fin_*.</figcaption>
+        </figure>
+
+        <h3>4.3 Diagramas de Sequência</h3>
+        <div class="grid-2">
+            <figure class="figure">
+                <a href="assets/diagramas/sequencia_plano_de_contas.png" target="_blank">
+                    <img src="assets/diagramas/sequencia_plano_de_contas.png" alt="Sequência Plano de Contas">
+                </a>
+                <figcaption>Figura 6 — Sequência: Incluir Plano de Contas.</figcaption>
+            </figure>
+            <figure class="figure">
+                <a href="assets/diagramas/sequencia_centro_de_custo.png" target="_blank">
+                    <img src="assets/diagramas/sequencia_centro_de_custo.png" alt="Sequência Centro de Custo">
+                </a>
+                <figcaption>Figura 7 — Sequência: Incluir Centro de Custo.</figcaption>
+            </figure>
+            <figure class="figure">
+                <a href="assets/diagramas/sequencia_rateios.png" target="_blank">
+                    <img src="assets/diagramas/sequencia_rateios.png" alt="Sequência Rateios">
+                </a>
+                <figcaption>Figura 8 — Sequência: Configurar Rateios.</figcaption>
+            </figure>
+            <figure class="figure">
+                <a href="assets/diagramas/sequencia_lancamentos_contabeis.png" target="_blank">
+                    <img src="assets/diagramas/sequencia_lancamentos_contabeis.png" alt="Sequência Lançamentos Contábeis">
+                </a>
+                <figcaption>Figura 9 — Sequência: Incluir Lançamento Contábil.</figcaption>
+            </figure>
+        </div>
+
+        <h3>4.4 Diagramas de Estado</h3>
+        <div class="grid-2">
+            <figure class="figure">
+                <a href="assets/diagramas/estado_plano_de_contas.png" target="_blank">
+                    <img src="assets/diagramas/estado_plano_de_contas.png" alt="Estado Plano de Contas">
+                </a>
+                <figcaption>Figura 10 — Estado: Plano de Contas.</figcaption>
+            </figure>
+            <figure class="figure">
+                <a href="assets/diagramas/estado_centro_de_custo.png" target="_blank">
+                    <img src="assets/diagramas/estado_centro_de_custo.png" alt="Estado Centro de Custo">
+                </a>
+                <figcaption>Figura 11 — Estado: Centro de Custo.</figcaption>
+            </figure>
+            <figure class="figure">
+                <a href="assets/diagramas/estado_rateios.png" target="_blank">
+                    <img src="assets/diagramas/estado_rateios.png" alt="Estado Rateios">
+                </a>
+                <figcaption>Figura 12 — Estado: Rateios.</figcaption>
+            </figure>
+            <figure class="figure">
+                <a href="assets/diagramas/estado_lancamentos_contabeis.png" target="_blank">
+                    <img src="assets/diagramas/estado_lancamentos_contabeis.png" alt="Estado Lançamentos">
+                </a>
+                <figcaption>Figura 13 — Estado: Lançamentos Contábeis.</figcaption>
+            </figure>
+        </div>
+
+        <h3>4.5 Outros Diagramas</h3>
+        <div class="grid-2">
+            <figure class="figure">
+                <a href="assets/diagramas/workflow_asis.png" target="_blank">
+                    <img src="assets/diagramas/workflow_asis.png" alt="Workflow AS-IS">
+                </a>
+                <figcaption>Figura 14 — Workflow AS-IS (processo atual).</figcaption>
+            </figure>
+            <figure class="figure">
+                <a href="assets/diagramas/caso_de_uso.png" target="_blank">
+                    <img src="assets/diagramas/caso_de_uso.png" alt="Caso de Uso">
+                </a>
+                <figcaption>Figura 15 — Diagrama de Casos de Uso completo.</figcaption>
+            </figure>
+        </div>
+
+        <h3>4.6 Especificações de Caso de Uso (UCSpec)</h3>
+        <ul class="download-list">
+            <li><a href="assets/ucspecs/UCSpec_PlanoDeContas.pdf" target="_blank">UCSpec — Plano de Contas (PDF)</a></li>
+            <li><a href="assets/ucspecs/UCSpec_CentroCusto.pdf" target="_blank">UCSpec — Centro de Custo (PDF)</a></li>
+            <li><a href="assets/ucspecs/UCSpec_Rateios.pdf" target="_blank">UCSpec — Rateios (PDF)</a></li>
+            <li><a href="assets/ucspecs/UCSpec_LancamentosContabeis.pdf" target="_blank">UCSpec — Lançamentos Contábeis (PDF)</a></li>
+        </ul>
+    </div>
+</section>
+
+<!-- 5. TELAS / VÍDEOS -->
+<section class="section alt" id="telas">
+    <div class="container">
+        <h2>5. Telas e Vídeo Demonstrativo</h2>
+
+        <h3>5.1 Capturas de Tela das Principais Funcionalidades</h3>
+        <p class="hint">
+            Adicione os prints em <code>assets/telas/</code> com os nomes indicados abaixo. Os slots já
+            estão prontos para exibir automaticamente as imagens quando forem colocadas na pasta.
+        </p>
+
+        <div class="grid-2">
+            <figure class="figure placeholder">
+                <img src="assets/telas/01_plano_de_contas.png" alt="Tela do Plano de Contas" onerror="this.parentElement.classList.add('missing')">
+                <figcaption>Tela 1 — Plano de Contas (<code>01_plano_de_contas.png</code>)</figcaption>
+            </figure>
+            <figure class="figure placeholder">
+                <img src="assets/telas/02_centro_de_custo.png" alt="Tela do Centro de Custo" onerror="this.parentElement.classList.add('missing')">
+                <figcaption>Tela 2 — Centro de Custo (<code>02_centro_de_custo.png</code>)</figcaption>
+            </figure>
+            <figure class="figure placeholder">
+                <img src="assets/telas/03_rateios.png" alt="Tela de Rateios" onerror="this.parentElement.classList.add('missing')">
+                <figcaption>Tela 3 — Rateios (<code>03_rateios.png</code>)</figcaption>
+            </figure>
+            <figure class="figure placeholder">
+                <img src="assets/telas/04_lancamentos.png" alt="Tela de Lançamentos" onerror="this.parentElement.classList.add('missing')">
+                <figcaption>Tela 4 — Lançamentos Contábeis (<code>04_lancamentos.png</code>)</figcaption>
+            </figure>
+            <figure class="figure placeholder">
+                <img src="assets/telas/05_fontes_recurso.png" alt="Tela de Fontes de Recurso" onerror="this.parentElement.classList.add('missing')">
+                <figcaption>Tela 5 — Fontes de Recurso (<code>05_fontes_recurso.png</code>)</figcaption>
+            </figure>
+            <figure class="figure placeholder">
+                <img src="assets/telas/06_contabilizacao.png" alt="Tela de Contabilização" onerror="this.parentElement.classList.add('missing')">
+                <figcaption>Tela 6 — Contabilização Automática (<code>06_contabilizacao.png</code>)</figcaption>
+            </figure>
+        </div>
+
+        <h3>5.2 Vídeo Demonstrativo (máx. 5 min)</h3>
+        <div class="video-wrap">
+            <div class="video-placeholder" id="video-slot">
+                <p><strong>▶ Substitua este bloco pelo embed do YouTube.</strong></p>
+                <p>Cole a URL do vídeo em <code>README.md</code> ou substitua o <code>&lt;iframe&gt;</code>
+                    abaixo pelo link do YouTube após o upload.</p>
+                <!-- Exemplo:
+                <iframe width="100%" height="480"
+                    src="https://www.youtube.com/embed/SEU_ID_AQUI"
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+                -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6. RELATÓRIO DE ESTÁGIO -->
+<section class="section" id="relatorio">
+    <div class="container">
+        <h2>6. Relatório de Estágio</h2>
+        <p>Relatório de estágio atualizado até a data de entrega do portfólio.</p>
+
+        <a class="btn-download" href="assets/relatorio/Relatorio_De_Estagio.pdf" target="_blank">
+            📄 Baixar Relatório de Estágio (PDF)
+        </a>
+
+        <p class="hint">
+            Arquivo: <code>assets/relatorio/Relatorio_De_Estagio.pdf</code> — substitua por uma versão mais
+            recente sempre que houver alterações no documento principal.
+        </p>
+    </div>
+</section>
+
+<!-- 7. IDENTIFICAÇÃO DO ALUNO -->
+<section class="section alt" id="identificacao">
+    <div class="container">
+        <h2>7. Identificação do Aluno</h2>
+        <div class="id-card">
+            <p><strong>Nome completo:</strong> Cauã Amaral Costeski Crosati</p>
+            <p><strong>Matrícula:</strong> <span class="edit-me">[PREENCHER MATRÍCULA]</span></p>
+            <p><strong>Curso:</strong> <span class="edit-me">[PREENCHER CURSO]</span></p>
+            <p><strong>Professor(a) orientador(a):</strong> <span class="edit-me">[PREENCHER NOME DO ORIENTADOR]</span></p>
+            <p><strong>Instituição:</strong> Centro Universitário Filadélfia — UniFil</p>
+            <p><strong>E-mail:</strong> zakacc@gmail.com</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>© 2026 Cauã Amaral Costeski Crosati — Portfólio de Estágio · UniFil.</p>
+        <p>Sistema Financeiro OPCTEC — HUTEC/UEL.</p>
+    </div>
+</footer>
+
+</body>
+</html>

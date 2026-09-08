@@ -42,14 +42,20 @@ Procure pelos marcadores `[PREENCHER ...]` no HTML e substitua:
 
 Nomeie exatamente assim para que o site exiba automaticamente:
 
+2 prints por CRUD (listagem + formulário):
+
 | Arquivo | Tela |
 |---|---|
-| `01_plano_de_contas.png` | Plano de Contas |
-| `02_centro_de_custo.png` | Centro de Custo |
-| `03_rateios.png` | Rateios |
-| `04_lancamentos.png` | Lançamentos Contábeis |
-| `05_fontes_recurso.png` | Fontes de Recurso |
-| `06_contabilizacao.png` | Contabilização Automática |
+| `01_plano_de_contas_lista.png` | Plano de Contas — listagem |
+| `01_plano_de_contas_form.png` | Plano de Contas — formulário |
+| `02_centro_de_custo_lista.png` | Centro de Custo — listagem |
+| `02_centro_de_custo_form.png` | Centro de Custo — formulário |
+| `03_rateios_lista.png` | Rateios — listagem |
+| `03_rateios_form.png` | Rateios — formulário |
+| `04_lancamentos_lista.png` | Lançamentos — listagem |
+| `04_lancamentos_form.png` | Lançamentos — formulário |
+| `05_fontes_recurso_lista.png` | Fontes de Recurso — listagem |
+| `05_fontes_recurso_form.png` | Fontes de Recurso — formulário |
 
 Os slots já estão prontos: enquanto o arquivo não existe aparece um placeholder pontilhado; assim que existir, a imagem entra automaticamente (sem precisar mexer no HTML).
 

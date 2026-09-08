@@ -109,6 +109,13 @@ body {
     margin-bottom: 6px;
     color: var(--text);
 }
+.section h4.print-group {
+    font-size: 18px;
+    color: var(--primary);
+    margin: 28px 0 8px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+}
 .section p, .section ul, .section ol { margin-bottom: 14px; }
 .section ul, .section ol { padding-left: 22px; }
 .section a { color: var(--primary-light); }

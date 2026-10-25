@@ -1,4 +1,4 @@
-# Portfólio de Estágio — Sistema Financeiro OPCTEC
+# Portfólio de Estágio — Sistema Financeiro
 
 Site estático (HTML + CSS puros) para a **Avaliação Bimestral — Portfólio do Projeto de Estágio** (UniFil, 3º bimestre, entrega 14/09/2026).
 
@@ -9,7 +9,7 @@ Basta abrir `index.html` no navegador (duplo clique). Não precisa de servidor l
 Se preferir servir via HTTP (recomendado para o vídeo iframe funcionar corretamente):
 
 ```bash
-cd F:/trabalhos_facul/Estagio_2026/portfolio_estagio
+cd F:/trabalhos_facul/Github_Facul/Portfolio_ModuloFinanceiro
 python -m http.server 8000
 # abra http://localhost:8000
 ```
@@ -17,7 +17,7 @@ python -m http.server 8000
 ## Estrutura de pastas
 
 ```
-portfolio_estagio/
+Portfolio_ModuloFinanceiro/
 ├── index.html                  # página única com as 7 seções obrigatórias
 ├── style.css
 ├── README.md                   # este arquivo
@@ -86,15 +86,15 @@ Escolha uma:
 
 ### Opção A — Netlify Drop (mais rápido, sem conta)
 1. Acesse https://app.netlify.com/drop
-2. Arraste a pasta `portfolio_estagio` inteira.
+2. Arraste a pasta `Portfolio_ModuloFinanceiro` inteira.
 3. Copie o link gerado (algo como `https://xxx.netlify.app`).
 4. Cole no Classroom.
 
 ### Opção B — GitHub Pages (se preferir git)
-1. Crie um repo público (ex.: `portfolio-estagio-contabil`).
-2. Suba o conteúdo da pasta `portfolio_estagio/` na raiz.
+1. Crie um repo público (ex.: `portfolio-estagio-financeiro`).
+2. Suba o conteúdo da pasta `Portfolio_ModuloFinanceiro/` na raiz.
 3. Settings → Pages → Source: `main` / `/root` → Save.
-4. Link: `https://SEU_USUARIO.github.io/portfolio-estagio-contabil/`.
+4. Link: `https://SEU_USUARIO.github.io/portfolio-estagio-financeiro/`.
 
 ### Opção C — Vercel
 1. `vercel deploy` na pasta (após instalar CLI e logar).

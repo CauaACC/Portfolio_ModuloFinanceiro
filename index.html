@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio de Estágio — Sistema Financeiro OPCTEC</title>
+    <title>Portfólio de Estágio — Sistema Financeiro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,8 +22,8 @@
         </ul>
     </nav>
     <div class="hero-content" id="inicio">
-        <h1>Sistema Financeiro OPCTEC</h1>
-        <p class="tagline">Módulo <strong>Financeiro</strong> do libcurso — automação contábil dos cursos e eventos da HUTEC/UEL.</p>
+        <h1>Sistema Financeiro</h1>
+        <p class="tagline">Subaba <strong>Contabilidade</strong> do libcurso — automação financeira dos cursos e eventos da HUTEC/UEL.</p>
         <p class="lead">
             Portfólio do projeto de estágio desenvolvido no 3º bimestre, reunindo documentação técnica,
             evidências da implementação e o cronograma de evolução do trabalho.
@@ -41,19 +41,19 @@
         <div class="grid-3">
             <div class="card">
                 <h3>Nome do Projeto</h3>
-                <p><strong>Sistema Financeiro OPCTEC</strong> — módulo Financeiro do libcurso (HUTEC/UEL).</p>
+                <p><strong>Sistema Financeiro</strong> — subaba Contabilidade do libcurso (HUTEC/UEL).</p>
             </div>
             <div class="card">
                 <h3>Objetivo</h3>
                 <p>Fornecer aos gestores da HUTEC/UEL um conjunto de ferramentas para registrar, classificar e
-                    automatizar os lançamentos contábeis dos cursos e eventos, garantindo rastreabilidade,
+                    automatizar os lançamentos dos cursos e eventos, garantindo rastreabilidade,
                     conciliação e apoio à tomada de decisão.</p>
             </div>
             <div class="card">
                 <h3>Breve Descrição</h3>
                 <p>Módulo web integrado ao sistema libcurso que implementa Plano de Contas, Centro de Custo,
-                    Rateios, Fontes de Recurso e Lançamentos Contábeis, além de motores automáticos de
-                    Contabilização (a partir de pagamentos) e Catálogo Contábil (bootstrap de eventos).</p>
+                    Rateios, Fontes de Recurso e Lançamentos, além do Motor Financeiro (geração automática
+                    a partir de pagamentos) e do componente de apoio Catálogo Financeiro (bootstrap de eventos).</p>
             </div>
         </div>
     </div>
@@ -66,7 +66,7 @@
 
         <h3>Problema que o sistema busca resolver</h3>
         <p>
-            A gestão contábil dos cursos e eventos da HUTEC-UEL era realizada em planilhas externas, com
+            A gestão financeira dos cursos e eventos da HUTEC-UEL era realizada em planilhas externas, com
             registro manual de cada pagamento, cálculo de taxas por meio de pagamento (PIX, cartão, boleto),
             distribuição de percentuais para taxas institucionais (Taxa HUTEC, Taxa Direção UEL) e conciliação
             posterior de forma retrabalhosa. Esse cenário produzia:
@@ -75,12 +75,12 @@
             <li>Alto risco de erro humano nos lançamentos e rateios;</li>
             <li>Dificuldade de conciliar receitas e despesas por evento;</li>
             <li>Ausência de um Plano de Contas padronizado por gestor;</li>
-            <li>Falta de rastreabilidade entre pagamento → lançamento → conta contábil.</li>
+            <li>Falta de rastreabilidade entre pagamento → lançamento → conta.</li>
         </ul>
         <p>
-            O Sistema Financeiro OPCTEC endereça esses pontos oferecendo um cadastro estruturado do
-            Plano de Contas, um motor de Contabilização que gera lançamentos automáticos a partir dos
-            pagamentos aprovados e um Catálogo Contábil que inicializa a estrutura contábil de um novo evento
+            O Sistema Financeiro endereça esses pontos oferecendo um cadastro estruturado do
+            Plano de Contas, um Motor Financeiro que gera lançamentos automáticos a partir dos
+            pagamentos aprovados e um Catálogo Financeiro que inicializa a estrutura financeira de um novo evento
             a partir de um modelo padrão ou de outro evento do mesmo gestor.
         </p>
 
@@ -113,7 +113,7 @@
         <p>
             O menu <code>area_admin_menu_financeiro.php</code> confirma a hierarquia: a aba <strong>Financeiro</strong>
             possui 4 subabas (Integrações, Contabilidade, Fiscal, Configuração), e o escopo deste estágio é a
-            subaba <strong>Contabilidade</strong>. Motores automáticos (Contabilização e Catálogo Contábil) operam
+            subaba <strong>Contabilidade</strong>. Motores automáticos (Motor Financeiro e Catálogo Financeiro) operam
             diretamente por SQL, sem camadas de domínio próprias.
         </p>
 
@@ -134,7 +134,7 @@
         <div class="uc-list">
             <div class="uc-item">
                 <h4>UC01 — Gerenciar Plano de Contas</h4>
-                <p>Permite ao gestor cadastrar, editar e excluir contas contábeis do evento, definindo cada
+                <p>Permite ao gestor cadastrar, editar e excluir contas do evento, definindo cada
                     conta como Analítica (aceita lançamento) ou Sintética (agrupadora). A exclusão só é
                     permitida se a conta não possuir filhos.</p>
             </div>
@@ -145,35 +145,36 @@
             </div>
             <div class="uc-item">
                 <h4>UC03 — Gerenciar Rateios</h4>
-                <p>Configura regras de rateio (percentuais e sub-rateios) aplicadas automaticamente na
-                    contabilização — por exemplo, Taxa HUTEC 10% e Taxa Direção UEL 10% com sub-rateios por
+                <p>Configura regras de rateio (percentuais e sub-rateios) aplicadas automaticamente pelo
+                    Motor Financeiro — por exemplo, Taxa HUTEC 10% e Taxa Direção UEL 10% com sub-rateios por
                     curso.</p>
             </div>
             <div class="uc-item">
-                <h4>UC04 — Gerenciar Lançamentos Contábeis</h4>
+                <h4>UC04 — Gerenciar Fontes de Recurso</h4>
+                <p>Cadastro das origens de recurso financeiro (ex.: PAGSEGURO, ITAU, CAIXA) usadas para
+                    classificar de onde vem o dinheiro em cada lançamento.</p>
+            </div>
+            <div class="uc-item">
+                <h4>UC05 — Gerenciar Lançamentos</h4>
                 <p>Registro manual ou automático de créditos e débitos nas contas do plano, com
                     <code>origemLancamento</code> = MANUAL ou PAGAMENTO_AUTOMATICO, respeitando o bloqueio de
                     períodos fechados.</p>
             </div>
             <div class="uc-item">
-                <h4>UC05 — Gerenciar Fontes de Recurso</h4>
-                <p>Cadastro das origens de recurso financeiro (ex.: PAGSEGURO, ITAU, CAIXA) usadas para
-                    classificar de onde vem o dinheiro em cada lançamento.</p>
-            </div>
-            <div class="uc-item">
-                <h4>UC06 — Contabilização Automática</h4>
-                <p>Motor invocado a partir da tela de Lançamentos. Para cada pagamento aprovado gera
-                    exatamente 2 linhas contábeis (crédito na receita + débito da taxa do meio de pagamento).
-                    É idempotente: reprocessar apaga somente linhas não conciliadas com origem
-                    PAGAMENTO_AUTOMATICO.</p>
-            </div>
-            <div class="uc-item">
-                <h4>UC07 — Catálogo Contábil (Bootstrap)</h4>
-                <p>Inicializa a estrutura contábil de um evento: pode COPIAR de outro evento do mesmo gestor
-                    ou aplicar o MODELO PADRÃO (22 contas, 3 fontes, 8 rateios pré-configurados baseados no
-                    balancete real da HUTEC). Não sobrescreve dados existentes.</p>
+                <h4>UC06 — Executar Motor Financeiro</h4>
+                <p>Motor invocado pelo gestor. Para cada pagamento aprovado gera exatamente 2 lançamentos
+                    (crédito na receita + débito da taxa do meio de pagamento). É idempotente: reprocessar
+                    apaga somente linhas não conciliadas com origem PAGAMENTO_AUTOMATICO.</p>
             </div>
         </div>
+
+        <p class="note"><em>Catálogo Financeiro</em> (<code>GerenciarCatalogoAC</code>, métodos <code>listarOrigens</code>,
+            <code>detalharOrigem</code>, <code>copiarDeEvento</code>, <code>aplicarModeloPadrao</code>) é um
+            componente de apoio que inicializa a estrutura financeira de um evento (copia de outro evento
+            do mesmo gestor ou aplica modelo padrão). Não figura entre os casos de uso do escopo.</p>
+
+        <p class="note"><strong>Atores:</strong> <em>Gestor</em> (base, com acesso aos 6 casos de uso)
+            e <em>Admin</em> (herda do Gestor via generalização UML, define permissões).</p>
 
         <h3>3.2 Cronograma de Desenvolvimento</h3>
 
@@ -194,11 +195,11 @@
                 <tr><td>04</td><td>Diagramas UML (DER, Classe)</td><td>22/04/2026</td><td>12/05/2026</td><td class="ok">Concluído</td></tr>
                 <tr><td>05</td><td>UC01 — Plano de Contas</td><td>29/04/2026</td><td>19/05/2026</td><td class="ok">Concluído</td></tr>
                 <tr><td>06</td><td>UC02 — Centro de Custo</td><td>06/05/2026</td><td>19/05/2026</td><td class="ok">Concluído</td></tr>
-                <tr><td>07</td><td>UC05 — Fontes de Recurso</td><td>13/05/2026</td><td>26/05/2026</td><td class="ok">Concluído</td></tr>
+                <tr><td>07</td><td>UC04 — Fontes de Recurso</td><td>13/05/2026</td><td>26/05/2026</td><td class="ok">Concluído</td></tr>
                 <tr><td>08</td><td>UC03 — Rateios</td><td>13/05/2026</td><td>02/06/2026</td><td class="ok">Concluído</td></tr>
-                <tr><td>09</td><td>UC04 — Lançamentos Contábeis</td><td>20/05/2026</td><td>09/06/2026</td><td class="ok">Concluído</td></tr>
-                <tr><td>10</td><td>UC07 — Catálogo Contábil (bootstrap)</td><td>03/06/2026</td><td>16/06/2026</td><td class="doing">Em andamento</td></tr>
-                <tr><td>11</td><td>UC06 — Contabilização (motor auto)</td><td>10/06/2026</td><td>23/06/2026</td><td class="doing">Em andamento</td></tr>
+                <tr><td>09</td><td>UC05 — Lançamentos</td><td>20/05/2026</td><td>09/06/2026</td><td class="ok">Concluído</td></tr>
+                <tr><td>10</td><td>Catálogo Financeiro (componente de apoio)</td><td>03/06/2026</td><td>16/06/2026</td><td class="doing">Em andamento</td></tr>
+                <tr><td>11</td><td>UC06 — Executar Motor Financeiro</td><td>10/06/2026</td><td>23/06/2026</td><td class="doing">Em andamento</td></tr>
                 <tr><td>12</td><td>Testes de integração</td><td>17/06/2026</td><td>30/06/2026</td><td class="todo">Previsto</td></tr>
                 <tr><td>13</td><td>Documentação final</td><td>24/06/2026</td><td>30/06/2026</td><td class="todo">Previsto</td></tr>
             </tbody>
@@ -228,7 +229,7 @@
             <a href="assets/diagramas/diagrama_classe.png" target="_blank">
                 <img src="assets/diagramas/diagrama_classe.png" alt="Diagrama de Classes">
             </a>
-            <figcaption>Figura 4 — Diagrama de Classes do domínio contábil.</figcaption>
+            <figcaption>Figura 4 — Diagrama de Classes do domínio financeiro.</figcaption>
         </figure>
 
         <h3>4.2 Diagrama Entidade-Relacionamento (DER)</h3>
@@ -260,10 +261,10 @@
                 <figcaption>Figura 8 — Sequência: Configurar Rateios.</figcaption>
             </figure>
             <figure class="figure">
-                <a href="assets/diagramas/sequencia_lancamentos_contabeis.png" target="_blank">
-                    <img src="assets/diagramas/sequencia_lancamentos_contabeis.png" alt="Sequência Lançamentos Contábeis">
+                <a href="assets/diagramas/sequencia_lancamentos.png" target="_blank">
+                    <img src="assets/diagramas/sequencia_lancamentos.png" alt="Sequência Lançamentos">
                 </a>
-                <figcaption>Figura 9 — Sequência: Incluir Lançamento Contábil.</figcaption>
+                <figcaption>Figura 9 — Sequência: Incluir Lançamento.</figcaption>
             </figure>
         </div>
 
@@ -288,10 +289,10 @@
                 <figcaption>Figura 12 — Estado: Rateios.</figcaption>
             </figure>
             <figure class="figure">
-                <a href="assets/diagramas/estado_lancamentos_contabeis.png" target="_blank">
-                    <img src="assets/diagramas/estado_lancamentos_contabeis.png" alt="Estado Lançamentos">
+                <a href="assets/diagramas/estado_lancamentos.png" target="_blank">
+                    <img src="assets/diagramas/estado_lancamentos.png" alt="Estado Lançamentos">
                 </a>
-                <figcaption>Figura 13 — Estado: Lançamentos Contábeis.</figcaption>
+                <figcaption>Figura 13 — Estado: Lançamentos.</figcaption>
             </figure>
         </div>
 
@@ -316,7 +317,7 @@
             <li><a href="assets/ucspecs/UCSpec_PlanoDeContas.pdf" target="_blank">UCSpec — Plano de Contas (PDF)</a></li>
             <li><a href="assets/ucspecs/UCSpec_CentroCusto.pdf" target="_blank">UCSpec — Centro de Custo (PDF)</a></li>
             <li><a href="assets/ucspecs/UCSpec_Rateios.pdf" target="_blank">UCSpec — Rateios (PDF)</a></li>
-            <li><a href="assets/ucspecs/UCSpec_LancamentosContabeis.pdf" target="_blank">UCSpec — Lançamentos Contábeis (PDF)</a></li>
+            <li><a href="assets/ucspecs/UCSpec_Lancamentos.pdf" target="_blank">UCSpec — Lançamentos (PDF)</a></li>
         </ul>
     </div>
 </section>
@@ -364,7 +365,7 @@
             </figure>
         </div>
 
-        <h4 class="print-group">4. Lançamentos Contábeis</h4>
+        <h4 class="print-group">4. Lançamentos</h4>
         <div class="grid-2">
             <figure class="figure placeholder">
                 <img src="assets/telas/04_Lancamentos_Lista.png" alt="Listagem de Lançamentos" onerror="this.parentElement.classList.add('missing')">
@@ -392,7 +393,7 @@
         <div class="video-wrap">
             <iframe width="100%" height="480"
                 src="https://www.youtube.com/embed/C0la6Cy57cE"
-                title="Vídeo demonstrativo — Sistema Financeiro OPCTEC"
+                title="Vídeo demonstrativo — Sistema Financeiro"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
@@ -433,7 +434,7 @@
 <footer class="site-footer">
     <div class="container">
         <p>© 2026 Cauã Amaral Costeski Crosati — Portfólio de Estágio · UniFil.</p>
-        <p>Sistema Financeiro OPCTEC — HUTEC/UEL.</p>
+        <p>Sistema Financeiro — HUTEC/UEL.</p>
     </div>
 </footer>
 
